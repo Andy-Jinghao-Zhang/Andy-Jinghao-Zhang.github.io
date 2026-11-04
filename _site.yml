@@ -1,0 +1,21 @@
+name: "personal-website"
+output_dir: "docs"
+
+navbar:
+  title: "Andy Zhang"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Resume"
+      href: resume.html
+    - text: "Dashboard"
+      href: dashboard.html
+  right:
+    - text: "GitHub"
+      href: https://github.com/Andy-Jinghao-Zhang
+    - text: "Email"
+      href: mailto:jz4026@cumc.columbia.edu
+
+output:
+  html_document:
+    theme: cosmo

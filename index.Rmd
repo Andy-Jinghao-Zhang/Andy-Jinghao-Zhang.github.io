@@ -1,0 +1,15 @@
+---
+title: "About Me"
+author: "Jinghao Zhang"
+output: html_document
+---
+
+# Welcome!
+
+Hi! My name is Jinghao Zhang.
+
+I am currently pursuing a Master of Public Health in Biostatistics at Columbia University's Mailman School of Public Health, with an expected graduation date of May 2027.
+
+I previously studied Applied Mathematics and Computer Science at Duke Kunshan University and Duke University.
+
+My interests include biostatistics, data analysis, and public health research.
