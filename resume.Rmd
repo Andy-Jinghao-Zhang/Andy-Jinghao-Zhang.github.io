@@ -1,0 +1,32 @@
+---
+title: "Resume"
+author: "Jinghao Zhang"
+output: html_document
+---
+
+## Education
+
+**Columbia University**  
+MPH in Biostatistics  
+Expected Graduation: May 2027
+
+**Duke Kunshan University and Duke University**  
+Applied Mathematics and Computer Science
+
+## Intership Experience
+
+**EMR Technical Solutions**  
+Data Analytics and Software Intern | 2026
+
+- Developed Python-based tools for healthcare provider data analysis.
+- Worked with Django and healthcare databases.
+
+**City Harvest**  
+Data Analytics Intern | 2026
+
+- Analyzed community and public health data.
+- Prepared reports and data visualizations.
+
+## Technical Skills
+
+R, Python, SAS, SQL, GitHub
