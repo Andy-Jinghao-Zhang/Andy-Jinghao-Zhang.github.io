@@ -1,0 +1,89 @@
+---
+title: "Instacart Dashboard"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+
+data("instacart")
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Number of Items per Order by Day of Week
+
+```{r order-boxplot, echo=FALSE}
+order_summary = instacart |>
+  group_by(order_id, order_dow) |>
+  summarize(
+    item_count = n(),
+    .groups = "drop"
+  )
+
+box_plot = order_summary |>
+  mutate(order_dow = factor(order_dow, levels = 0:6)) |>
+  ggplot(aes(x = order_dow, y = item_count)) +
+  geom_boxplot() +
+  labs(
+    x = "Day of Week",
+    y = "Number of Items per Order"
+  )
+
+ggplotly(box_plot)
+```
+
+### Top 10 Product Departments
+
+```{r top-departments, echo=FALSE}
+top_departments = instacart |>
+  count(department, sort = TRUE) |>
+  slice_head(n = 10)
+
+plot_ly(
+  top_departments,
+  x = ~reorder(department, n),
+  y = ~n,
+  type = "bar"
+) |>
+  layout(
+    xaxis = list(title = "Department"),
+    yaxis = list(title = "Number of Products Purchased"),
+    margin = list(b = 110)
+  )
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Product Popularity vs. Reorder Rate
+
+```{r product-reorders, echo=FALSE}
+product_summary = instacart |>
+  group_by(product_name) |>
+  summarize(
+    purchases = n(),
+    reorder_rate = mean(reordered, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  slice_max(purchases, n = 100)
+
+plot_ly(
+  product_summary,
+  x = ~purchases,
+  y = ~reorder_rate,
+  text = ~product_name,
+  type = "scatter",
+  mode = "markers"
+) |>
+  layout(
+    xaxis = list(title = "Number of Purchases"),
+    yaxis = list(title = "Reorder Rate", tickformat = ".0%")
+  )
+```
